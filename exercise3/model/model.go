@@ -17,12 +17,12 @@ type Wallet struct {
 
 type Card struct {
   ID            Identifier
-  LimitMoney    Money
+  LimitAmount   Money
   LimitDuration LimitTimeEnum
 }
 
 type UserSpendMoney struct {
-  TransactionID    string // can be used for more detail information in other tables but not explained here
+  TransactionID    Identifier // can be used for more detail information in other tables but not explained here
   User             *User
   Card             *Card
   Amount           Money // currently it is not very useful here

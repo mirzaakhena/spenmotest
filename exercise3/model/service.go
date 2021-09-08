@@ -14,7 +14,7 @@ func (w *Wallet) Spend(repo FindLastUserSpendRepo, card *Card, amount Money, now
 
   // never spend on that card ever. This is the first time
   if lastUserSpend == nil {
-    return w.newLimitToSpend(card.LimitMoney, amount, card, now)
+    return w.newLimitToSpend(card.LimitAmount, amount, card, now)
   }
 
   stillPossibleToSpend := false
@@ -76,7 +76,7 @@ func (w *Wallet) newLimitToSpend(balanceRemaing Money, amount Money, card *Card,
     return nil, fmt.Errorf("your balance is only %1.0f", w.Balance)
   }
 
-  if amount > card.LimitMoney {
+  if amount > card.LimitAmount {
     return nil, fmt.Errorf("your card %s remaining balance limit is only %1.0f", card.ID, balanceRemaing)
   }
 
@@ -84,7 +84,7 @@ func (w *Wallet) newLimitToSpend(balanceRemaing Money, amount Money, card *Card,
     User:             w.User,
     Card:             card,
     Amount:           amount,
-    BalanceRemaining: card.LimitMoney - amount,
+    BalanceRemaining: card.LimitAmount - amount,
     Date:             now,
   }
 

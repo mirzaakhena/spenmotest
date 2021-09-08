@@ -31,15 +31,15 @@ func GetDefaultSituation() Situation {
       User: &user1,
       ID:   "w1", Balance: model.Money(1000),
       Cards: []*model.Card{
-        {ID: "cardone", LimitMoney: 300, LimitDuration: model.LimitTimeEnumDaily},
-        {ID: "cardtwo", LimitMoney: 100, LimitDuration: model.LimitTimeEnumMonthly},
+        {ID: "cardone", LimitAmount: 300, LimitDuration: model.LimitTimeEnumDaily},
+        {ID: "cardtwo", LimitAmount: 100, LimitDuration: model.LimitTimeEnumMonthly},
       },
     },
     {
       User: &user1,
       ID:   "w2", Balance: model.Money(20000),
       Cards: []*model.Card{
-        {ID: "cardthree", LimitMoney: 5000, LimitDuration: model.LimitTimeEnumWeekly},
+        {ID: "cardthree", LimitAmount: 5000, LimitDuration: model.LimitTimeEnumWeekly},
       },
     },
   }
