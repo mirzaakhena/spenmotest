@@ -15,4 +15,4 @@ Each team has a wallet.
 Team wallets have also have daily, monthly limits
 ```
 
-![Class Diagram](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mirzaakhena/spenmo/datastructure/exercise3/do/master/class_diagram.puml)
+![Class Diagram](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mirzaakhena/spenmotest/exercise3/do/master/class_diagram.puml)
