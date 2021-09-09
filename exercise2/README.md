@@ -1,4 +1,4 @@
-# Find a number sequence inside an array of numbers
+### Find a number sequence inside an array of numbers
 
 ```
 arr = [20, 7, 8, 10, 2, 5, 6]

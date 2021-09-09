@@ -4,10 +4,14 @@ import (
   "time"
 )
 
+// User is simplified version of User information
+// any usefull detail can be add later
 type User struct {
   ID Identifier
 }
 
+// Wallet hold one user reference annd hold multiple cards
+// Balance will be shared to all cards
 type Wallet struct {
   ID      Identifier
   User    *User
@@ -15,14 +19,20 @@ type Wallet struct {
   Cards   []*Card
 }
 
+// Card information like LimitAmount or LimitDuration is user defined
 type Card struct {
   ID            Identifier
   LimitAmount   Money
   LimitDuration LimitTimeEnum
 }
 
+// UserSpendMoney is a transaction record to hold the history of user regarding spending money activity on each card.
+// BalanceRemaining always less than the Card LimitAmount and will be reset to Card LimitAmount after the LimitDuration
+// Date capture the transaction date
+// TransactionID can be used to link to other tables such as accounting or order for example
+// Amount show how much user spend money in that curret transaction
 type UserSpendMoney struct {
-  TransactionID    Identifier // can be used for more detail information in other tables but not explained here
+  TransactionID    Identifier
   User             *User
   Card             *Card
   Amount           Money // currently it is not very useful here
@@ -30,11 +40,14 @@ type UserSpendMoney struct {
   Date             time.Time
 }
 
+// Team only hold one Wallet reference
+// Wallet owned and managed by specific User
 type Team struct {
   ID     Identifier
   Wallet *Wallet
 }
 
+// UserTeam bind User and team with Role
 type UserTeam struct {
   User *User
   Team *Team
@@ -60,6 +73,7 @@ const (
   UserTeamRoleMember = UserTeamRole("member")
 )
 
+// FindLastUserSpendRepo used by Spend service to find the last UserSpendMoney record
 type FindLastUserSpendRepo interface {
   FindLastUserSpend(user *User, card *Card) (*UserSpendMoney, error)
 }

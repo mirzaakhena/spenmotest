@@ -5,6 +5,7 @@ import (
   "time"
 )
 
+// Spend is a service that will reduce the amount of wallet balance for specific card in certain time
 func (w *Wallet) Spend(repo FindLastUserSpendRepo, card *Card, amount Money, now time.Time) (*UserSpendMoney, error) {
 
   lastUserSpend, err := repo.FindLastUserSpend(w.User, card)
@@ -12,7 +13,7 @@ func (w *Wallet) Spend(repo FindLastUserSpendRepo, card *Card, amount Money, now
     return nil, err
   }
 
-  // never spend on that card ever. This is the first time
+  // never spend on that card yet. This is the first time user spend it
   if lastUserSpend == nil {
     return w.newLimitToSpend(card.LimitAmount, amount, card, now)
   }

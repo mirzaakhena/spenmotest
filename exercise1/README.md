@@ -1,4 +1,4 @@
-# Write a function to find if a number in the tree exists
+### Write a function to find if a number in the tree exists
 
 ```
      6
