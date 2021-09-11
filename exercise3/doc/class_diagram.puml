@@ -9,15 +9,15 @@ class Wallet {
     {field} User <b>*User</b>
     {field} Balance <b>Money</b>
     {field} Cards <b>[]*Card</b>
-    {method} Spend() <b>UserSpendMoney</b>
+    {method} Spend() <b>CardSpendHistory</b>
 }
 
 Wallet *-- User
 Wallet *-- Card
-Wallet *-- FindLastUserSpendRepo
+Wallet *-- FindLastCardSpendRepo
 
-interface FindLastUserSpendRepo {
-    {method} <b>FindLastUserSpend()</b>
+interface FindLastCardSpendRepo {
+    {method} <b>FindLastCardSpend()</b>
 }
 
 class Card {
@@ -28,7 +28,7 @@ class Card {
 
 Card *-- LimitTimeEnum
 
-class UserSpendMoney {
+class CardSpendHistory {
     {field} TransactionID <b>Identifier</b>
     {field} User <b>*User</b>
     {field} Cards <b>*Card</b>
@@ -37,8 +37,8 @@ class UserSpendMoney {
     {field} Date <b>time.Time</b>
 }
 
-UserSpendMoney *-- User
-UserSpendMoney *-- Card
+CardSpendHistory *-- User
+CardSpendHistory *-- Card
 
 class Team {
    {field} ID <b>Identifier</b>

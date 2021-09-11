@@ -6,9 +6,9 @@ import (
 )
 
 // Spend is a service that will reduce the amount of wallet balance for specific card in certain time
-func (w *Wallet) Spend(repo FindLastUserSpendRepo, card *Card, amount Money, now time.Time) (*UserSpendMoney, error) {
+func (w *Wallet) Spend(repo FindLastCardSpendRepo, card *Card, amount Money, now time.Time) (*CardSpendHistory, error) {
 
-  lastUserSpend, err := repo.FindLastUserSpend(w.User, card)
+  lastUserSpend, err := repo.FindLastCardSpend(w.User, card)
   if err != nil {
     return nil, err
   }
@@ -51,7 +51,7 @@ func (w *Wallet) Spend(repo FindLastUserSpendRepo, card *Card, amount Money, now
       return nil, fmt.Errorf("your balance limit is only %1.0f in card %s. not enough to spend %1.0f", lastUserSpend.BalanceRemaining, card.ID, amount)
     }
 
-    newUserSpend := UserSpendMoney{
+    newUserSpend := CardSpendHistory{
       User:             w.User,
       Card:             card,
       Amount:           amount,
@@ -70,7 +70,7 @@ func (w *Wallet) Spend(repo FindLastUserSpendRepo, card *Card, amount Money, now
 
 }
 
-func (w *Wallet) newLimitToSpend(balanceRemaing Money, amount Money, card *Card, now time.Time) (*UserSpendMoney, error) {
+func (w *Wallet) newLimitToSpend(balanceRemaing Money, amount Money, card *Card, now time.Time) (*CardSpendHistory, error) {
 
   if amount > w.Balance {
     // TODO for security reason we must be aware to display the current balance
@@ -81,7 +81,7 @@ func (w *Wallet) newLimitToSpend(balanceRemaing Money, amount Money, card *Card,
     return nil, fmt.Errorf("your card %s remaining balance limit is only %1.0f", card.ID, balanceRemaing)
   }
 
-  newUserSpend := UserSpendMoney{
+  newUserSpend := CardSpendHistory{
     User:             w.User,
     Card:             card,
     Amount:           amount,

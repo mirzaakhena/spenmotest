@@ -15,8 +15,8 @@ func NewLastUserSpendCase(amount, balanceRemaining model.Money, lastTime time.Ti
   return &normalLastUserSpend{amount: amount, balanceRemaining: balanceRemaining, lastTime: lastTime}
 }
 
-func (l *normalLastUserSpend) FindLastUserSpend(user *model.User, card *model.Card) (*model.UserSpendMoney, error) {
-  return &model.UserSpendMoney{
+func (l *normalLastUserSpend) FindLastCardSpend(user *model.User, card *model.Card) (*model.CardSpendHistory, error) {
+  return &model.CardSpendHistory{
     User:             user,
     Card:             card,
     Amount:           l.amount,
@@ -27,7 +27,7 @@ func (l *normalLastUserSpend) FindLastUserSpend(user *model.User, card *model.Ca
 
 type nilLastUserSpend struct {}
 
-func (l *nilLastUserSpend) FindLastUserSpend(user *model.User, card *model.Card) (*model.UserSpendMoney, error) {
+func (l *nilLastUserSpend) FindLastCardSpend(user *model.User, card *model.Card) (*model.CardSpendHistory, error) {
   return nil, nil
 }
 
