@@ -21,14 +21,14 @@ func main() {
     },
   }
 
-  fmt.Printf("%v\n", root.Find(6))  // true
-  fmt.Printf("%v\n", root.Find(7))  // true
-  fmt.Printf("%v\n", root.Find(10)) // true
-  fmt.Printf("%v\n", root.Find(8))  // true
+  fmt.Printf("%v\n", root.Find(6))   // true
+  fmt.Printf("%v\n", root.Find(7))   // true
+  fmt.Printf("%v\n", root.Find(10))  // true
+  fmt.Printf("%v\n", root.Find(8))   // true
   fmt.Printf("%v\n", root.Find(100)) // true
-  fmt.Printf("%v\n", root.Find(14)) // true
+  fmt.Printf("%v\n", root.Find(14))  // true
 
-  fmt.Printf("%v\n", root.Find(9))  // false
-  fmt.Printf("%v\n", root.Find(5))  // false
+  fmt.Printf("%v\n", root.Find(9)) // false
+  fmt.Printf("%v\n", root.Find(5)) // false
 
 }
