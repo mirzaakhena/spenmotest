@@ -15,6 +15,8 @@ Each team has a wallet.
 Team wallets have also have daily, monthly limits
 ```
 
+My schema is in class diagram form.
+
 Read the [Here](https://github.com/mirzaakhena/spenmotest/blob/main/exercise3/current_situation.go) for detail case
 
 ![Class Diagram](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mirzaakhena/spenmotest/main/exercise3/doc/class_diagram.puml)

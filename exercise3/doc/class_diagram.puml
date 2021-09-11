@@ -9,11 +9,10 @@ class Wallet {
     {field} User <b>*User</b>
     {field} Balance <b>Money</b>
     {field} Cards <b>[]*Card</b>
-    {method} <b>Spend()</b>
+    {method} Spend() <b>UserSpendMoney</b>
 }
 
 Wallet *-- User
-Wallet *-- Money
 Wallet *-- Card
 Wallet *-- FindLastUserSpendRepo
 
@@ -27,8 +26,6 @@ class Card {
     {field} LimitDuration <b>LimitTimeEnum</b>
 }
 
-Card *-- Identifier
-Card *-- Money
 Card *-- LimitTimeEnum
 
 class UserSpendMoney {
@@ -40,17 +37,14 @@ class UserSpendMoney {
     {field} Date <b>time.Time</b>
 }
 
-UserSpendMoney *-- Identifier
 UserSpendMoney *-- User
 UserSpendMoney *-- Card
-UserSpendMoney *-- Money
 
 class Team {
    {field} ID <b>Identifier</b>
    {field} Wallet <b>*Wallet</b>
 }
 
-Team *-- Identifier
 Team *-- Wallet
 
 class UserTeam {
@@ -72,14 +66,14 @@ class Money {
 }
 
 enum LimitTimeEnum {
-    <b>LimitTimeEnumDaily</b>
-    <b>LimitTimeEnumWeekly</b>
-    <b>LimitTimeEnumMonthly</b>
+    <b>Daily</b>
+    <b>Weekly</b>
+    <b>Monthly</b>
 }
 
 enum UserTeamRole {
-    <b>UserTeamRoleAdmin</b>
-    <b>UserTeamMember</b>
+    <b>Admin</b>
+    <b>Member</b>
 }
 
 @enduml
